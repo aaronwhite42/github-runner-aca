@@ -70,7 +70,7 @@ getRegistrationToken
 echo "Configuring GitHub Actions Runner and registering"
 ./config.sh --unattended \
     --url "${RUNNER_URL}" \
-    --token "${TOKEN}" \
+    --token "${GITHUB_TOKEN}" \
     --name "${RUNNER_NAME}" \
     --work ${RUNNER_WORK_DIRECTORY} \
     --runnergroup ${GROUP} \
