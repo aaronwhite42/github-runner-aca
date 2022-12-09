@@ -16,7 +16,7 @@ env:
   IMAGE_TAG: ${{ github.run_number }}
   RUNNER_REPOSITORY_URL: https://github.com/aaronwhite42/github-runner-aca
   RESOURCE_GROUP: aw-case-rg
-  LOCATION: australiasoutheast
+  LOCATION: australiaeast
   
 
 jobs:
@@ -55,7 +55,7 @@ jobs:
           environment-variables: RUNNER_REPOSITORY_URL=${{ env.RUNNER_REPOSITORY_URL }}
           image: ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           # Name of the Container Group Instance
-          name: awacitestvnet
+          name: awacitest2vnet
           registry-login-server: ${{ secrets.ACR_SERVER }}
           # Username to log in Container Image Registry Server
           registry-username: ${{ secrets.AWCAPPGITHUBRUNNER_REGISTRY_USERNAME }}
