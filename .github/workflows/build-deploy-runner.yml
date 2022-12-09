@@ -14,9 +14,9 @@ on:
 env:
   IMAGE_NAME: runner
   IMAGE_TAG: ${{ github.run_number }}
-  RUNNER_REPOSITORY_URL: https://github.com/CharleneMcKeown/github-runner-aci
-  RESOURCE_GROUP: mmckeown7rg
-  LOCATION: westeurope
+  RUNNER_REPOSITORY_URL: https://github.com/aaronwhite42/github-runner-aca
+  RESOURCE_GROUP: aw-case-rg
+  LOCATION: australiaeast
   
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
         run: | 
           docker build . -t ${{ secrets.ACR_SERVER }}/$IMAGE_NAME:$IMAGE_TAG
       - name: Login to ACR 
-        run:  docker login ${{ secrets.ACR_SERVER }} -u ${{ secrets.ACR_USER }} -p ${{ secrets.ACR_PASSWORD }} 
+        run:  docker login ${{ secrets.ACR_SERVER }} -u ${{ secrets.AWCAPPGITHUBRUNNER_REGISTRY_USERNAME }} -p ${{ secrets.AWCAPPGITHUBRUNNER_REGISTRY_PASSWORD }} 
       - name: Push to ACR
         run: |
           docker push ${{ secrets.ACR_SERVER }}/$IMAGE_NAME:$IMAGE_TAG
@@ -40,7 +40,7 @@ jobs:
         uses: Azure/login@v1
         with:
           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AWCAPPGITHUBRUNNER_AZURE_CREDENTIALS }}
 
       # Deploy an Azure Container Instance
       - name: Deploy to Azure Container Instances
@@ -53,13 +53,13 @@ jobs:
           dns-name-label: mmckeown7rg${{ github.run_number }}
           # List of environment variables for the container. Space-seperated in "key=value" format
           environment-variables: RUNNER_REPOSITORY_URL=${{ env.RUNNER_REPOSITORY_URL }}
-          image: ${{ SECRETS.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          image: ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           # Name of the Container Group Instance
           name: actions-runner
-          registry-login-server: ${{ SECRETS.ACR_SERVER }}
+          registry-login-server: ${{ secrets.ACR_SERVER }}
           # Username to log in Container Image Registry Server
-          registry-username: ${{ secrets.ACR_USER }}
+          registry-username: ${{ secrets.AWCAPPGITHUBRUNNER_REGISTRY_USERNAME }}
           # Password to log in Container Image Registry Server
-          registry-password: ${{ secrets.ACR_PASSWORD }}
+          registry-password: ${{ secrets.AWCAPPGITHUBRUNNER_REGISTRY_PASSWORD }}
           # secure-environment-variables: # optional, default is 
           secure-environment-variables: GITHUB_TOKEN=${{ secrets.GIT_PAT }}
