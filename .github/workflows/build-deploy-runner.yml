@@ -16,7 +16,7 @@ env:
   IMAGE_TAG: ${{ github.run_number }}
   RUNNER_REPOSITORY_URL: https://github.com/aaronwhite42/github-runner-aca
   RESOURCE_GROUP: aw-case-rg
-  LOCATION: australiaeast
+  LOCATION: australiasoutheast
   
 
 jobs:
