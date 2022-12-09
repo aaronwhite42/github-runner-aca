@@ -55,7 +55,7 @@ jobs:
           environment-variables: RUNNER_REPOSITORY_URL=${{ env.RUNNER_REPOSITORY_URL }}
           image: ${{ secrets.ACR_SERVER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           # Name of the Container Group Instance
-          name: actions-runner
+          name: awacitestvnet
           registry-login-server: ${{ secrets.ACR_SERVER }}
           # Username to log in Container Image Registry Server
           registry-username: ${{ secrets.AWCAPPGITHUBRUNNER_REGISTRY_USERNAME }}
