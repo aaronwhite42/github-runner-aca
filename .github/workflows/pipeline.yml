@@ -20,7 +20,7 @@ jobs:
         azcliversion: 2.30.0
         inlineScript: |
           az account show
-          az storage account show -n accountname --query networkRuleSet
+          az storage account show -n awtestsapub --query networkRuleSet
           az storage container create -n awtest2 --account-name awtestsapub
 
     - name: Storage Private Endpoint
@@ -29,5 +29,5 @@ jobs:
         azcliversion: 2.30.0
         inlineScript: |
           az account show
-          az storage account show -n accountname --query networkRuleSet
+          az storage account show -n awcasesepe1 --query networkRuleSet
           az storage container create -n awtest --account-name awcasesepe1
