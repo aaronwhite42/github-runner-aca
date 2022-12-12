@@ -29,7 +29,11 @@ RUN apt-get update \
     netcat \
     software-properties-common \
     unzip \
-    azure-cli
+    azure-cli \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io \
+    docker-compose-plugin
 
 # Create a user for running actions
 RUN useradd -m actions
