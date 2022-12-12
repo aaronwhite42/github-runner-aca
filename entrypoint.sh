@@ -76,6 +76,9 @@ echo "Configuring GitHub Actions Runner and registering"
     --runnergroup ${GROUP} \
     $RUNNER_OPTIONS
 
+echo "Checking az cli version"
+az --version
+
 echo "Starting GitHub Actions Runner"
 env -i ./runsvc.sh
 
