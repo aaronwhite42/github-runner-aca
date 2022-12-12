@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - run: sudo apt-get install azure-cli
+    # - run: sudo apt-get install azure-cli
 
     - name: Azure Login
       uses: azure/login@v1
