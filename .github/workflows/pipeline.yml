@@ -8,6 +8,8 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
+    
+    - run: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
     - name: Azure Login
       uses: azure/login@v1
