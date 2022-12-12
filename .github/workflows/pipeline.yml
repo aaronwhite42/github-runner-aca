@@ -14,10 +14,20 @@ jobs:
       with:
         creds: ${{ secrets.AWCAPPGITHUBRUNNER_AZURE_CREDENTIALS }}
 
-    - name: Azure CLI script
+    - name: Storage Public Endpoint
       uses: azure/CLI@v1
       with:
         azcliversion: 2.30.0
         inlineScript: |
           az account show
+          az storage account show -n accountname --query networkRuleSet
+          az storage container create -n awtest2 --account-name awtestsapub
+
+    - name: Storage Private Endpoint
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          az account show
+          az storage account show -n accountname --query networkRuleSet
           az storage container create -n awtest --account-name awcasesepe1
