@@ -1,5 +1,4 @@
-FROM mcr.microsoft.com/azure-cli
-# ubuntu:focal
+FROM ubuntu:focal
 
 ARG GH_RUNNER_VERSION=2.289.3
 
@@ -29,7 +28,8 @@ RUN apt-get update \
     lsb-release \
     netcat \
     software-properties-common \
-    unzip
+    unzip \
+    azure-cli
 
 # Create a user for running actions
 RUN useradd -m actions
