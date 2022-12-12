@@ -38,6 +38,9 @@ RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ `lsb_
 RUN apt-get update \ 
     && apt-get install azure-cli
 
+RUN curl -fsSL https://get.docker.com -o get-docker.sh
+RUN chmod +x get-docker.sh
+RUN sh get-docker.sh
 
 # Create a user for running actions
 RUN useradd -m actions
