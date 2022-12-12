@@ -1,4 +1,5 @@
-FROM ubuntu:focal
+FROM mcr.microsoft.com/azure-cli
+# ubuntu:focal
 
 ARG GH_RUNNER_VERSION=2.289.3
 
