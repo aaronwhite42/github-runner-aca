@@ -30,10 +30,10 @@ jobs:
     - name: Storage Private Endpoint
       run: |
         az account show
-        az storage account show -n awcasesepe1 --query networkRuleSet
+        az storage account show -n awtestsape2 --query networkRuleSet
         az container show --resource-group aw-case-rg --name awacitest3vnet --query ipAddress.ip --output tsv
         echo "Creating storage container 'awtest2'"
-        az storage container create -n awtest2 --account-name awcasesepe1
+        az storage container create -n awtest2 --account-name awtestsape2
 
 #     - name: Storage Public Endpoint
 #       uses: azure/CLI@v1
