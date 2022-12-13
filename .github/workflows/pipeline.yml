@@ -51,6 +51,5 @@ jobs:
 #         inlineScript: |
 #           az account show
 #           az storage account show -n awcasesepe1 --query networkRuleSet
-#           ifconfig | grep inet
 #           az container show --resource-group aw-case-rg --name awacitest3vnet --query ipAddress.ip --output tsv
 #           az storage container create -n awtest --account-name awcasesepe1
