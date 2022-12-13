@@ -12,7 +12,8 @@ jobs:
     - uses: actions/checkout@v3
     
     # - run: az account show
-    - run: sudo dockerd
+    # - run: sudo dockerd
+    - run: az --version
 
     - name: Azure Login
       uses: azure/login@v1
