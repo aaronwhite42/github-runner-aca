@@ -35,6 +35,7 @@ jobs:
         echo "Creating storage container 'awtest2'"
         az storage container create -n awtest2 --account-name awtestsape2
         az storage blob upload --data "teststring" -c awtest2 -n upload-from-runner.txt --account-name awtestsape2 --account-key ${{ secrets.STORAGE_KEY }}
+        az storage blob list -c awtest2
 
 #     - name: Storage Public Endpoint
 #       uses: azure/CLI@v1
