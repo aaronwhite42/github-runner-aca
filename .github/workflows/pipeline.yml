@@ -12,6 +12,7 @@ jobs:
     - uses: actions/checkout@v3
     
     # - run: az account show
+    - run: systemctl start docker
 
     - name: Azure Login
       uses: azure/login@v1
