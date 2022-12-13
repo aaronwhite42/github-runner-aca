@@ -20,11 +20,20 @@ jobs:
       with:
         creds: ${{ secrets.AWCAPPGITHUBRUNNER_AZURE_CREDENTIALS }}
 
-    - name: az cli
+    - name: Storage Public Endpoint
       run: |
         az account show
         az storage account show -n awtestsapub --query networkRuleSet
         az storage container create -n awtest2 --account-name awtestsapub
+
+
+    - name: Storage Private Endpoint
+      run: |
+        az account show
+        az storage account show -n awcasesepe1 --query networkRuleSet
+        ifconfig | grep inet
+        az container show --resource-group aw-case-rg --name awacitest3vnet --query ipAddress.ip --output tsv
+        az storage container create -n awtest --account-name awcasesepe1
 
 #     - name: Storage Public Endpoint
 #       uses: azure/CLI@v1
@@ -35,13 +44,13 @@ jobs:
 #           az storage account show -n awtestsapub --query networkRuleSet
 #           az storage container create -n awtest2 --account-name awtestsapub
 
-    - name: Storage Private Endpoint
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.30.0
-        inlineScript: |
-          az account show
-          az storage account show -n awcasesepe1 --query networkRuleSet
-          ifconfig | grep inet
-          az container show --resource-group aw-case-rg --name awacitest3vnet --query ipAddress.ip --output tsv
-          az storage container create -n awtest --account-name awcasesepe1
+#     - name: Storage Private Endpoint
+#       uses: azure/CLI@v1
+#       with:
+#         azcliversion: 2.30.0
+#         inlineScript: |
+#           az account show
+#           az storage account show -n awcasesepe1 --query networkRuleSet
+#           ifconfig | grep inet
+#           az container show --resource-group aw-case-rg --name awacitest3vnet --query ipAddress.ip --output tsv
+#           az storage container create -n awtest --account-name awcasesepe1
